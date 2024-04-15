@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "84639364858",
+    "project_id": "asodesunidos-d7807",
+    "storage_bucket": "asodesunidos-d7807.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:84639364858:android:660b8495115f0588203b43",
+        "android_client_info": {
+          "package_name": "com.una.proyecto_moviles_asodesunidos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuVoLvYm4-6OMTlixjd4-dXcWYnQVdEN0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
