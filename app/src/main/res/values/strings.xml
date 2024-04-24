@@ -10,6 +10,35 @@
     <string name="main_menu_admin_loan_button_text">Assign a loan</string>
     <string name="main_menu_admin_welcome_text">Welcome to Asodesunidos, Admin!</string>
     <string name="main_menu_customer_welcome_text">Welcome to Asodesunidos, Associate!</string>
+    <string name="new_associate">New Associate</string>
+    <string name="fullNameHint">Juanito Mora</string>
+    <string name="id_number">ID number</string>
+    <string name="full_name">Full name</string>
+    <string name="idNumberHint">118500002</string>
+    <string name="wage_in_crc">Wage (in CRC)</string>
+    <string name="wageHint">1000000</string>
+    <string name="phone_number">Phone number</string>
+    <string name="phoneNumberHint">85023154</string>
+    <string name="dateOfBirthHint">01/01/2000</string>
+    <string name="date_of_birth_dd_mm_aaaa">Date of birth (dd/mm/aaaa)</string>
+    <string name="marital_status">Marital status</string>
+    <string name="addressHint">Heredia, Heredia, Costa Rica</string>
+    <string name="create_associate">Create associate</string>
+    <string name="address">Address</string>
+    <string name="go_back">Go back</string>
+    <string name="assign_loan">Assign loan</string>
+    <string name="associate_s_id">Associate\'s ID</string>
+    <string name="search">Search</string>
+    <string name="calculate_monthly_payment">Calculate monthly payment</string>
+    <string name="assign_loan_button_text">Assign loan</string>
+    <string name="wage">Wage</string>
+    <string name="loan_type">Loan type</string>
+    <string name="loan_term">Loan term</string>
+    <string name="name">Name</string>
+    <string name="_1000000">1000000</string>
+    <string name="loan_amount">Loan Amount</string>
+    <string name="_2000000">2000000</string>
+    <string name="your_monthly_payment_is">Your monthly payment is:</string>
 
 
 </resources>

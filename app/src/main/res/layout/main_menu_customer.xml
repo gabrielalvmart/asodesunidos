@@ -61,7 +61,7 @@
 
 
     <Button
-        android:id="@+id/btn_logout"
+        android:id="@+id/btn_associate_logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"

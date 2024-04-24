@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/loan_type"
+        app:layout_constraintBottom_toTopOf="@+id/spn_assignLoan_loanType"
+        app:layout_constraintStart_toStartOf="@+id/spn_assignLoan_loanType" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/loan_amount"
+        app:layout_constraintBottom_toTopOf="@+id/txt_loan_amount"
+        app:layout_constraintStart_toStartOf="@+id/txt_loan_amount" />
+
+    <Spinner
+        android:id="@+id/spn_assignLoan_loanType"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Spinner
+        android:id="@+id/spn_assignLoan_loanTime"
+        android:layout_width="130dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.058"
+        app:layout_constraintStart_toEndOf="@+id/spn_assignLoan_loanType"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/txt_loan_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="@string/_2000000"
+        android:inputType="number"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="@+id/spn_assignLoan_loanType"
+        app:layout_constraintTop_toBottomOf="@+id/spn_assignLoan_loanType"
+        android:autofillHints="" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/loan_term"
+        app:layout_constraintBottom_toTopOf="@+id/spn_assignLoan_loanTime"
+        app:layout_constraintStart_toStartOf="@+id/spn_assignLoan_loanTime" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/calculate_monthly_payment"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/btn_calculate_monthly_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/accent_cyan"
+        android:padding="16dp"
+        android:text="@string/calculate_monthly_payment"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="@+id/txt_loan_amount"
+        app:layout_constraintTop_toBottomOf="@+id/txt_loan_amount" />
+
+    <TextView
+        android:id="@+id/txtvw_monthly_payment_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/your_monthly_payment_is"
+        app:layout_constraintStart_toStartOf="@+id/btn_calculate_monthly_payment"
+        app:layout_constraintTop_toBottomOf="@+id/btn_calculate_monthly_payment" />
+
+    <EditText
+        android:id="@+id/txt_monthly_payment_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@+id/txtvw_monthly_payment_result"
+        app:layout_constraintTop_toBottomOf="@+id/txtvw_monthly_payment_result" />
+</androidx.constraintlayout.widget.ConstraintLayout>

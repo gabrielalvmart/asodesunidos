@@ -15,36 +15,50 @@ class MainActivity : AppCompatActivity() {
     lateinit var txt_email : EditText
     lateinit var txt_password : EditText
 
+    private var sessionManager = SessionManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        asodesunidos_db.fetchUsers()
+        AsodesunidosDB.fetchUsers()
         setContentView(R.layout.login_screen)
 
+        sessionManager.initialize(this)
         btn_login = findViewById(R.id.btn_login)
         txt_email = findViewById(R.id.txt_login_emailAddress)
         txt_password = findViewById(R.id.txt_login_password)
 
 
         btn_login.setOnClickListener{
-            var tempUser = asodesunidos_db.attemptLogin(txt_email.text.toString(), txt_password.text.toString())
-            if (tempUser != null) {
+            if (loginUser())
                 Toast.makeText(this, "Logged In!", Toast.LENGTH_SHORT).show()
-                if (tempUser.type == "customer"){
-                    val intent = Intent(this, MainMenuCustomer::class.java )
-                    startActivity(intent)
-                    finish()
-                }
-                if (tempUser.type == "admin"){
-                    val intent = Intent(this, MainMenuAdmin::class.java )
-                    startActivity(intent)
-                    finish()
-                }
-            }
-            else
+            else {
                 Toast.makeText(this, "Incorrect credentials", Toast.LENGTH_SHORT).show()
+                txt_email.setText("")
+                txt_password.setText("")
+            }
         }
 
-
     }
+
+
+    private fun loginUser(): Boolean {
+        val tempUser = AsodesunidosDB.attemptLogin(txt_email.text.toString(), txt_password.text.toString())
+        return if (tempUser != null) {
+            sessionManager.saveLogin(tempUser.email, generateSessionId())
+            when (tempUser.type) {
+                "customer" -> { startActivity(Intent(this, MainMenuCustomer::class.java )) }
+                "admin" -> { startActivity(Intent(this, MainMenuAdmin::class.java )) }
+                else -> return false
+            }
+            true
+        } else false
+    }
+
+    private fun generateSessionId(): String {
+        val currentTime = System.currentTimeMillis().toString()
+        val randomString = (0..9999).random().toString().padStart(4, '0')
+        return "$currentTime-$randomString"
+    }
+
+
 }

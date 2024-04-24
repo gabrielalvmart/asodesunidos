@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btn_assignLoan_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="#999999"
+        android:text="@string/go_back"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/assign_loan"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txt_assignLoan_associateID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/idNumberHint"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColorHint="#546E7A"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/associate_s_id"
+        app:layout_constraintBottom_toTopOf="@+id/txt_assignLoan_associateID"
+        app:layout_constraintStart_toStartOf="@+id/txt_assignLoan_associateID" />
+
+    <Button
+        android:id="@+id/btn_assignLoan_searchAssociate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/search"
+        android:backgroundTint="@color/accent_cyan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txt_assignLoan_associateID"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <Button
+        android:id="@+id/btn_assignLoan_calculateMonthlyPayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/accent_cyan"
+        android:text="@string/calculate_monthly_payment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_loan_amount" />
+
+    <Button
+        android:id="@+id/btn_assignLoan_assign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/accent_cyan"
+        android:text="@string/assign_loan_button_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_assignLoan_monthlyPayment"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <EditText
+        android:id="@+id/txt_assignLoan_wage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:enabled="false"
+        android:hint="@string/_1000000"
+        android:inputType="text"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="@+id/txt_assignLoan_associateID"
+        app:layout_constraintTop_toBottomOf="@+id/txt_assignLoan_associateID" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wage"
+        app:layout_constraintBottom_toTopOf="@+id/txt_assignLoan_wage"
+        app:layout_constraintStart_toStartOf="@+id/txt_assignLoan_wage" />
+
+    <Spinner
+        android:id="@+id/spn_assignLoan_loanType"
+        android:layout_width="154dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="@+id/txt_assignLoan_wage"
+        app:layout_constraintTop_toBottomOf="@+id/txt_assignLoan_wage" />
+
+    <Spinner
+        android:id="@+id/spn_assignLoan_loanTime"
+        android:layout_width="154dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toEndOf="@+id/spn_assignLoan_loanType"
+        app:layout_constraintTop_toBottomOf="@+id/txt_assignLoan_wage" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/loan_type"
+        app:layout_constraintBottom_toTopOf="@+id/spn_assignLoan_loanType"
+        app:layout_constraintStart_toStartOf="@+id/spn_assignLoan_loanType" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/loan_term"
+        app:layout_constraintBottom_toTopOf="@+id/spn_assignLoan_loanTime"
+        app:layout_constraintStart_toStartOf="@+id/spn_assignLoan_loanTime" />
+
+    <EditText
+        android:id="@+id/txt_assignLoan_monthlyPayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="0"
+        android:inputType="text"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_assignLoan_calculateMonthlyPayment" />
+
+    <EditText
+        android:id="@+id/txt_loan_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="2000000"
+        android:inputType="text"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="@+id/spn_assignLoan_loanType"
+        app:layout_constraintTop_toBottomOf="@+id/spn_assignLoan_loanType" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loan Amount"
+        app:layout_constraintBottom_toTopOf="@+id/txt_loan_amount"
+        app:layout_constraintStart_toStartOf="@+id/txt_loan_amount" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

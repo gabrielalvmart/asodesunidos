@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btn_newAssociate_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="#999999"
+        android:text="@string/go_back"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/new_associate"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txt_newAssociate_idNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:width="320dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/idNumberHint"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:textColorHint="#546E7A"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/id_number"
+        app:layout_constraintBottom_toTopOf="@+id/txt_newAssociate_idNumber"
+        app:layout_constraintStart_toStartOf="@+id/txt_newAssociate_idNumber" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/full_name"
+        app:layout_constraintBottom_toTopOf="@+id/txt_newAssociate_fullName"
+        app:layout_constraintStart_toStartOf="@+id/txt_newAssociate_fullName" />
+
+    <EditText
+        android:id="@+id/txt_newAssociate_fullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:width="320dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/fullNameHint"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColorHint="#546E7A"
+        app:layout_constraintStart_toStartOf="@+id/txt_newAssociate_idNumber"
+        app:layout_constraintTop_toBottomOf="@+id/txt_newAssociate_idNumber" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wage_in_crc"
+        app:layout_constraintBottom_toTopOf="@+id/txt_newAssociate_wage"
+        app:layout_constraintStart_toStartOf="@+id/txt_newAssociate_wage" />
+
+    <EditText
+        android:id="@+id/txt_newAssociate_wage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:width="320dp"
+        android:ems="10"
+        android:hint="@string/wageHint"
+        android:inputType="text"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="@+id/txt_newAssociate_fullName"
+        app:layout_constraintTop_toBottomOf="@+id/txt_newAssociate_fullName"
+        android:autofillHints="" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/phone_number"
+        app:layout_constraintBottom_toTopOf="@+id/txt_newAssociate_phoneNumber"
+        app:layout_constraintStart_toStartOf="@+id/txt_newAssociate_phoneNumber" />
+
+    <EditText
+        android:id="@+id/txt_newAssociate_phoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:width="320dp"
+        android:ems="10"
+        android:hint="@string/phoneNumberHint"
+        android:inputType="phone"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="@+id/txt_newAssociate_wage"
+        app:layout_constraintTop_toBottomOf="@+id/txt_newAssociate_wage"
+        android:autofillHints="" />
+
+    <EditText
+        android:id="@+id/txt_newAssociate_dateOfBirth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:width="320dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/dateOfBirthHint"
+        android:inputType="date"
+        android:minHeight="48dp"
+        android:textColorHint="#546E7A"
+        app:layout_constraintStart_toStartOf="@+id/txt_newAssociate_phoneNumber"
+        app:layout_constraintTop_toBottomOf="@+id/txt_newAssociate_phoneNumber" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date_of_birth_dd_mm_aaaa"
+        app:layout_constraintBottom_toTopOf="@+id/txt_newAssociate_dateOfBirth"
+        app:layout_constraintStart_toStartOf="@+id/txt_newAssociate_dateOfBirth" />
+
+    <Spinner
+        android:id="@+id/spn_newAssociate_maritalStatus"
+        android:layout_width="320dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="@+id/txt_newAssociate_dateOfBirth"
+        app:layout_constraintTop_toBottomOf="@+id/txt_newAssociate_dateOfBirth" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/marital_status"
+        app:layout_constraintBottom_toTopOf="@+id/spn_newAssociate_maritalStatus"
+        app:layout_constraintStart_toStartOf="@+id/spn_newAssociate_maritalStatus" />
+
+    <EditText
+        android:id="@+id/txt_newAssociate_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:width="320dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/addressHint"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColorHint="#546E7A"
+        app:layout_constraintStart_toStartOf="@+id/spn_newAssociate_maritalStatus"
+        app:layout_constraintTop_toBottomOf="@+id/spn_newAssociate_maritalStatus" />
+
+    <Button
+        android:id="@+id/btn_newAssociate_createAssociate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/accent_cyan"
+        android:text="@string/create_associate"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.785"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/address"
+        app:layout_constraintBottom_toTopOf="@+id/txt_newAssociate_address"
+        app:layout_constraintStart_toStartOf="@+id/txt_newAssociate_address" />
+</androidx.constraintlayout.widget.ConstraintLayout>

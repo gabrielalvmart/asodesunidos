@@ -18,6 +18,15 @@
             android:exported="true"/>
 
         <activity
+            android:name=".CalculateMonthlyPayment"
+            android:exported="true"/>
+
+
+        <activity
+            android:name=".MyInformation"
+            android:exported="true"/>
+
+        <activity
             android:name=".MainMenuCustomer"
             android:exported="true"/>
 

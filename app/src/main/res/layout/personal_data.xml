@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btn_myInfo_updateInfo"
+        android:layout_width="123dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/accent_cyan"
+        android:text="Update my info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.194"
+        app:layout_constraintStart_toEndOf="@+id/btn_myInfo_back"
+        app:layout_constraintTop_toTopOf="@+id/btn_myInfo_back"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <Spinner
+        android:id="@+id/spn_myInfo_maritalStatus"
+        android:layout_width="320dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="@+id/txt_myInfo_dateOfBirth"
+        app:layout_constraintTop_toBottomOf="@+id/txt_myInfo_dateOfBirth" />
+
+    <EditText
+        android:id="@+id/txt_myInfo_idNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:width="320dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:enabled="false"
+        android:hint="@string/idNumberHint"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:textColorHint="#546E7A"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wage_in_crc"
+        app:layout_constraintBottom_toTopOf="@+id/txt_myInfo_wage"
+        app:layout_constraintStart_toStartOf="@+id/txt_myInfo_wage" />
+
+    <EditText
+        android:id="@+id/txt_myInfo_fullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:width="320dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:enabled="false"
+        android:hint="@string/fullNameHint"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColorHint="#546E7A"
+        app:layout_constraintStart_toStartOf="@+id/txt_myInfo_idNumber"
+        app:layout_constraintTop_toBottomOf="@+id/txt_myInfo_idNumber" />
+
+    <EditText
+        android:id="@+id/txt_myInfo_wage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:width="320dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:enabled="false"
+        android:hint="@string/wageHint"
+        android:inputType="text"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="@+id/txt_myInfo_fullName"
+        app:layout_constraintTop_toBottomOf="@+id/txt_myInfo_fullName" />
+
+    <Button
+        android:id="@+id/btn_myInfo_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="#999999"
+        android:text="@string/go_back"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/phone_number"
+        app:layout_constraintBottom_toTopOf="@+id/txt_myInfo_phoneNumber"
+        app:layout_constraintStart_toStartOf="@+id/txt_myInfo_phoneNumber" />
+
+    <EditText
+        android:id="@+id/txt_myInfo_phoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:width="320dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/phoneNumberHint"
+        android:inputType="phone"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="@+id/txt_myInfo_wage"
+        app:layout_constraintTop_toBottomOf="@+id/txt_myInfo_wage" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/marital_status"
+        app:layout_constraintBottom_toTopOf="@+id/spn_myInfo_maritalStatus"
+        app:layout_constraintStart_toStartOf="@+id/spn_myInfo_maritalStatus" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/id_number"
+        app:layout_constraintBottom_toTopOf="@+id/txt_myInfo_idNumber"
+        app:layout_constraintStart_toStartOf="@+id/txt_myInfo_idNumber" />
+
+    <EditText
+        android:id="@+id/txt_myInfo_dateOfBirth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:width="320dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/dateOfBirthHint"
+        android:inputType="date"
+        android:minHeight="48dp"
+        android:textColorHint="#546E7A"
+        app:layout_constraintStart_toStartOf="@+id/txt_myInfo_phoneNumber"
+        app:layout_constraintTop_toBottomOf="@+id/txt_myInfo_phoneNumber" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/full_name"
+        app:layout_constraintBottom_toTopOf="@+id/txt_myInfo_fullName"
+        app:layout_constraintStart_toStartOf="@+id/txt_myInfo_fullName" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/address"
+        app:layout_constraintBottom_toTopOf="@+id/txt_myInfo_address"
+        app:layout_constraintStart_toStartOf="@+id/txt_myInfo_address" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date_of_birth_dd_mm_aaaa"
+        app:layout_constraintBottom_toTopOf="@+id/txt_myInfo_dateOfBirth"
+        app:layout_constraintStart_toStartOf="@+id/txt_myInfo_dateOfBirth" />
+
+    <EditText
+        android:id="@+id/txt_myInfo_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:width="320dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/addressHint"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColorHint="#546E7A"
+        app:layout_constraintStart_toStartOf="@+id/spn_myInfo_maritalStatus"
+        app:layout_constraintTop_toBottomOf="@+id/spn_myInfo_maritalStatus" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="28dp"
+        android:text="My information"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
