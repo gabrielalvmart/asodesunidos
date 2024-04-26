@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.content.SharedPreferences.Editor
 import android.util.Log
 import androidx.core.content.edit
+import com.una.data.SessionData
 
 object SessionManager {
     private lateinit var sharedPreferences: SharedPreferences
@@ -42,4 +43,3 @@ object SessionManager {
 
 
 }
-data class SessionData(val userId: String, val sessionId: String)

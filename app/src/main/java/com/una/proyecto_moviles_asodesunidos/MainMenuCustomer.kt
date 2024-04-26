@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
+import com.una.data.SessionData
 
 class MainMenuCustomer: AppCompatActivity() {
     private var sessionManager = SessionManager

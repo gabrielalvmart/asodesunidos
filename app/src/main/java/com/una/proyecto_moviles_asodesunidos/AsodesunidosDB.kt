@@ -3,6 +3,7 @@ package com.una.proyecto_moviles_asodesunidos
 import com.google.firebase.database.getValue
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.una.models.AssociateModel
 
 object AsodesunidosDB {
     private val db = Firebase.database
