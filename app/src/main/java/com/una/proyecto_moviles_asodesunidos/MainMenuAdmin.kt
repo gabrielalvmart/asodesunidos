@@ -24,7 +24,7 @@ class MainMenuAdmin : AppCompatActivity() {
         }
 
         btn_new_associate.setOnClickListener{
-            startActivity(Intent(this, AddNewAssociateActivity::class.java ))
+            startActivity(Intent(this, AddAssociateActivity::class.java ))
         }
     }
 

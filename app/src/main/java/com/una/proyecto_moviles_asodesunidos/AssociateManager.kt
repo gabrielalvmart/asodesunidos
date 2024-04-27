@@ -10,7 +10,7 @@ object AssociateManager {
 
     fun saveAssociate(associate: AssociateModel) {
         sharedPreferences.edit {
-            putInt("id", associate.id)
+            putString("id", associate.id)
             putString("name", associate.name)
             putInt("salary", associate.salary)
             putString("phone", associate.phone)
@@ -22,7 +22,7 @@ object AssociateManager {
     }
 
     fun getAssociate(): AssociateModel {
-        val id = sharedPreferences.getInt("id", 0)
+        val id = sharedPreferences.getString("id", "") ?: ""
         val name = sharedPreferences.getString("name", "") ?: ""
         val salary = sharedPreferences.getInt("salary", 0)
         val phone = sharedPreferences.getString("phone", "") ?: ""

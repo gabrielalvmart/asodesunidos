@@ -1,7 +1,7 @@
 package com.una.models
 
 class AssociateModel (
-    var id: Int = 0,
+    var id: String = "",
     var name: String = "",
     var salary: Int = 0,
     var phone: String = "",
