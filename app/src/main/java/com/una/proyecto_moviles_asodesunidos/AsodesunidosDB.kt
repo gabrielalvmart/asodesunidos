@@ -1,6 +1,9 @@
 package com.una.proyecto_moviles_asodesunidos
 
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.getValue
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -53,5 +56,20 @@ object AsodesunidosDB {
             onComplete(false, "Failed to generate unique ID for associate")
         }
     }
+
+    fun getAssociate(associateId: String, onComplete: (AssociateModel?) -> Unit) {
+        associatesRef.child(associateId).addListenerForSingleValueEvent(object :
+            ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val associateData = snapshot.getValue(AssociateModel::class.java)
+                onComplete(associateData)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                onComplete(null)
+            }
+        })
+    }
+
 
 }

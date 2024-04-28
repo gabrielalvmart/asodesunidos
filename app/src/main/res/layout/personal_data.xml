@@ -138,6 +138,7 @@
         android:width="320dp"
         android:autofillHints=""
         android:ems="10"
+        android:enabled="false"
         android:hint="@string/dateOfBirthHint"
         android:inputType="date"
         android:minHeight="48dp"
