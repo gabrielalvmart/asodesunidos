@@ -7,40 +7,40 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.getValue
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.una.models.AssociateModel
+import com.una.models.UserModel
 
 object AsodesunidosDB {
     private val db = Firebase.database
-    private val associatesRef: DatabaseReference = db.getReference("associates")
+    private val associatesRef: DatabaseReference = db.getReference("users")
 
-    data class User(var password: String, var type: String, var email: String){
-        constructor() : this("", "", "")
+    private var users : MutableList<UserModel> = mutableListOf()
+
+    fun getUsers(): MutableList<UserModel> {
+        fetchUsers()
+        return users
     }
-    private var users : MutableList<User> = mutableListOf()
-
 
     fun fetchUsers(){
         db.getReference("users").get().addOnSuccessListener {
             for (child in it.children){
-                val user = child.getValue<User>()
+                val user = child.getValue<UserModel>()
                 if (user != null && !users.contains(user)) {
                     users.add(user)
                 }
             }
         }
-
     }
 
-    private fun userExists(email: String) : User? {
-        return users.find{ it.email == email}
+    private fun userExists(userid: String) : UserModel? {
+        return users.find{ it.id == userid}
     }
 
-    fun attemptLogin(email: String, password: String) : User? {
-        var tempUser: User? = userExists(email);
-        return if(tempUser != null && tempUser.password == password) tempUser else null
+    fun attemptLogin(userid: String, password: String) : UserModel? {
+        val tempUser: UserModel? = userExists(userid)
+        return if(tempUser != null && tempUser.comparePassword(password)) tempUser else null
     }
 
-    fun addAssociate(associate: AssociateModel, onComplete: (Boolean, String?) -> Unit) {
+    fun addAssociate(associate: UserModel, onComplete: (Boolean, String?) -> Unit) {
         val associateId = associate.id
         if (associateId != null) {
             associate.id = associateId
@@ -57,11 +57,11 @@ object AsodesunidosDB {
         }
     }
 
-    fun getAssociate(associateId: String, onComplete: (AssociateModel?) -> Unit) {
+    fun getAssociate(associateId: String, onComplete: (UserModel?) -> Unit) {
         associatesRef.child(associateId).addListenerForSingleValueEvent(object :
             ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val associateData = snapshot.getValue(AssociateModel::class.java)
+                val associateData = snapshot.getValue(UserModel::class.java)
                 onComplete(associateData)
             }
 

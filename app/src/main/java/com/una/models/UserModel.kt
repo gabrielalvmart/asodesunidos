@@ -1,12 +1,20 @@
 package com.una.models
 
 class UserModel(
-    var username: String? = null,
-    var email: String? = null,
-    private var password: String? = null,
-    var type: String? = null
+    var id: String = "",
+    var password: String? = null,
+    var type: String? = null,
+    var name: String = "",
+    var salary: Int = 0,
+    var phone: String = "",
+    var birthDate: String = "",
+    var maritalStatus: String = "",
+    var address: String = "",
+    var loans: List<LoanModel> = emptyList()
+
 ) {
-    fun comparePassword(password_attempt: String) : Boolean {
-        return password_attempt.equals(password)
+    fun comparePassword(passwordAttempt: String) : Boolean {
+        return passwordAttempt == password
     }
+
 }

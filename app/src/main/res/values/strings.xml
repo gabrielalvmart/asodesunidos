@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Asodesunidos APP</string>
     <string name="Login">LOGIN to Asodesunidos</string>
-    <string name="email">email</string>
+    <string name="email">User ID</string>
     <string name="password">password</string>
     <string name="button_text">Login</string>
     <string name="login_screen_content_description">Background image of a handshake</string>
@@ -33,12 +33,21 @@
     <string name="assign_loan_button_text">Assign loan</string>
     <string name="wage">Wage</string>
     <string name="loan_type">Loan type</string>
-    <string name="loan_term">Loan term</string>
+    <string name="loan_term">Term in years</string>
     <string name="name">Name</string>
     <string name="_1000000">1000000</string>
     <string name="loan_amount">Loan Amount</string>
     <string name="_2000000">2000000</string>
     <string name="your_monthly_payment_is">Your monthly payment is:</string>
+    <string name="manage_savings">Manage savings</string>
+    <string name="manage_savings_type">Type</string>
+    <string name="manage_savings_status">Status</string>
+    <string name="manage_savings_amount">Amount</string>
+    <string name="manage_savings_christmas">Christmas</string>
+    <string name="manage_savings_enable">Enable</string>
+    <string name="manage_savings_vehicle_registration">Vehicle Registration</string>
+    <string name="manage_savings_extraordinary">Extraordinary</string>
+    <string name="manage_savings_zero">0</string>
 
 
 </resources>

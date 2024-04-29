@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
 
     lateinit var btn_login : Button
-    lateinit var txt_email : EditText
+    lateinit var txt_user : EditText
     lateinit var txt_password : EditText
 
     private var sessionManager = SessionManager
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         sessionManager.initialize(this)
         btn_login = findViewById(R.id.btn_login)
-        txt_email = findViewById(R.id.txt_login_emailAddress)
+        txt_user = findViewById(R.id.txt_login_userid)
         txt_password = findViewById(R.id.txt_login_password)
 
 
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Logged In!", Toast.LENGTH_SHORT).show()
             else {
                 Toast.makeText(this, "Incorrect credentials", Toast.LENGTH_SHORT).show()
-                txt_email.setText("")
+                txt_user.setText("")
                 txt_password.setText("")
             }
         }
@@ -42,13 +42,12 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
     private fun loginUser(): Boolean {
-        val tempUser = AsodesunidosDB.attemptLogin(txt_email.text.toString(), txt_password.text.toString())
+        val tempUser = AsodesunidosDB.attemptLogin(txt_user.text.toString(), txt_password.text.toString())
         return if (tempUser != null) {
-            sessionManager.saveLogin(tempUser.email, generateSessionId())
+            sessionManager.saveLogin(tempUser.id, generateSessionId())
             when (tempUser.type) {
-                "customer" -> { startActivity(Intent(this, MainMenuCustomer::class.java )) }
+                "associate" -> { startActivity(Intent(this, MainMenuCustomer::class.java )) }
                 "admin" -> { startActivity(Intent(this, MainMenuAdmin::class.java )) }
                 else -> return false
             }

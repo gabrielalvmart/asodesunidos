@@ -11,7 +11,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.una.models.AssociateModel
+import com.una.models.UserModel
 
 class AddAssociateActivity : AppCompatActivity() {
     lateinit var idNumberEditText: EditText
@@ -98,7 +98,7 @@ class AddAssociateActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val associate = AssociateModel(idNumber, fullName, wage.toInt(), phoneNumber, dateOfBirth, maritalStatus, address)
+            val associate = UserModel(idNumber, "TEMPORAL", "associate", fullName, wage.toInt(), phoneNumber, dateOfBirth, maritalStatus, address)
             addAssociateToDataBase(associate)
         }
 
@@ -107,10 +107,11 @@ class AddAssociateActivity : AppCompatActivity() {
         }
     }
 
-    private fun addAssociateToDataBase(associate: AssociateModel) {
+    private fun addAssociateToDataBase(associate: UserModel) {
         AsodesunidosDB.addAssociate(associate) { success, errorMessage ->
             if (success) {
                 showToast("Asociado agregado exitosamente")
+                finish()
             } else {
                 showToast("Error al agregar el asociado: $errorMessage")
             }
