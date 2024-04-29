@@ -31,7 +31,7 @@ object AsodesunidosDB {
         }
     }
 
-    fun userExists(userid: String) : UserModel? {
+    private fun userExists(userid: String) : UserModel? {
         return users.find{ it.id == userid}
     }
 
@@ -69,35 +69,6 @@ object AsodesunidosDB {
                 onComplete(null)
             }
         })
-    }
-
-    fun updateAssociate(updatedUser: UserModel, onComplete: (Boolean, String?) -> Unit) {
-        val userId = updatedUser.id
-        if (userId != "") {
-            val userRef = associatesRef.child(userId)
-            userRef.setValue(updatedUser)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        onComplete(true, null)
-                    } else {
-                        onComplete(false, task.exception?.message)
-                    }
-                }
-        } else {
-            onComplete(false, "El ID del usuario no puede estar vacío")
-        }
-    }
-
-    fun updateSavingsValue(userId: String, savingsType: String, newValue: Int, onComplete: (Boolean, String?) -> Unit) {
-        val userRef = associatesRef.child(userId)
-        userRef.child("savings").child(savingsType).setValue(newValue)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    onComplete(true, null)
-                } else {
-                    onComplete(false, task.exception?.message)
-                }
-            }
     }
 
 

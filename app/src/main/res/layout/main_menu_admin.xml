@@ -32,7 +32,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_main_menu_admin_welcomeText" />
 
     <Button
-        android:id="@+id/btn_newAssociate_createAssociate"
+        android:id="@+id/btn_assign_a_loan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/accent_cyan"

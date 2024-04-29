@@ -8,23 +8,27 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainMenuAdmin : AppCompatActivity() {
 
-    lateinit var btn_logout: Button;
-    lateinit var btn_new_associate: Button;
+    private lateinit var btnLogout: Button
+    private lateinit var btnNewAssociate: Button
+    private lateinit var btnAssignLoan: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.main_menu_admin)
 
+        btnAssignLoan = findViewById(R.id.btn_assign_a_loan)
+        btnLogout = findViewById(R.id.btn_logout)
 
-        btn_logout = findViewById(R.id.btn_logout)
-
-        btn_new_associate = findViewById(R.id.btn_new_associate)
-        btn_logout.setOnClickListener{
+        btnNewAssociate = findViewById(R.id.btn_new_associate)
+        btnLogout.setOnClickListener{
 
         }
 
-        btn_new_associate.setOnClickListener{
+        btnNewAssociate.setOnClickListener{
             startActivity(Intent(this, AddAssociateActivity::class.java ))
+        }
+        btnAssignLoan.setOnClickListener {
+            startActivity(Intent(this, AssignLoan::class.java ))
         }
     }
 
