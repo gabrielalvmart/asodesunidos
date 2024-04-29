@@ -28,6 +28,9 @@
             android:name=".MainMenuCustomer"
             android:exported="true" />
         <activity
+            android:name=".AssignLoan"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

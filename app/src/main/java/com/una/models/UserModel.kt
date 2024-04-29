@@ -16,5 +16,12 @@ class UserModel(
     fun comparePassword(passwordAttempt: String) : Boolean {
         return passwordAttempt == password
     }
+    fun addLoan(loan: LoanModel) {
+        loans.plus(loan)
+    }
+
+    fun calculateMaximumMonthlyPayment(): Double{
+        return salary * 0.45
+    }
 
 }

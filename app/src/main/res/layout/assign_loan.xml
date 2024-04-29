@@ -99,7 +99,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_assignLoan_associateID" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/textview_assign_loan_wage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/wage"
@@ -124,7 +124,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_assignLoan_wage" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/textview_assign_loan_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/loan_type"
@@ -132,7 +132,7 @@
         app:layout_constraintStart_toStartOf="@+id/spn_assignLoan_loanType" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/textview_assign_loan_term"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/loan_term"
@@ -167,7 +167,7 @@
         app:layout_constraintTop_toBottomOf="@+id/spn_assignLoan_loanType" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/textview_assign_loan_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Loan Amount"
