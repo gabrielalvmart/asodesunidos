@@ -11,6 +11,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.una.models.SavingModel
 import com.una.models.UserModel
 
 class AddAssociateActivity : AppCompatActivity() {
@@ -97,8 +98,8 @@ class AddAssociateActivity : AppCompatActivity() {
                 wageEditText.error = "Ingrese un salario válido"
                 return@setOnClickListener
             }
-
-            val associate = UserModel(idNumber, "TEMPORAL", "associate", fullName, wage.toInt(), phoneNumber, dateOfBirth, maritalStatus, address)
+            val savings = SavingModel(0,0,0,0)
+            val associate = UserModel(idNumber, "TEMPORAL", "associate", fullName, wage.toInt(), phoneNumber, dateOfBirth, maritalStatus, address, emptyList(),savings)
             addAssociateToDataBase(associate)
         }
 

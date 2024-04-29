@@ -10,11 +10,13 @@ class UserModel(
     var birthDate: String = "",
     var maritalStatus: String = "",
     var address: String = "",
-    var loans: List<LoanModel> = emptyList()
+    var loans: List<LoanModel> = emptyList(),
+    var savings : SavingModel ?= null
 
-) {
+){
     fun comparePassword(passwordAttempt: String) : Boolean {
         return passwordAttempt == password
     }
+
 
 }

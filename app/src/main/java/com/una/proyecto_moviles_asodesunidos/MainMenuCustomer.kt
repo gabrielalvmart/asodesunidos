@@ -14,7 +14,7 @@ class MainMenuCustomer: AppCompatActivity() {
     private lateinit var sid: String
 
     private lateinit var btnMyLoans: Button // TODO
-    private lateinit var btnManageSavings: Button // TODO
+    private lateinit var btnManageSavings: Button
     private lateinit var btnCalculatePayment: Button
     private lateinit var btnMyInformation: Button
     private lateinit var btnLogout: Button
@@ -47,8 +47,9 @@ class MainMenuCustomer: AppCompatActivity() {
             startActivity(Intent(this, MainActivity::class.java ))
         }
 
-        // TODO: Create "My Loans" screen
-        // TODO: Create "Manage savings" screen
+        btnManageSavings.setOnClickListener{
+            startActivity(Intent(this, MySavings::class.java ))
+        }
 
     }
 
