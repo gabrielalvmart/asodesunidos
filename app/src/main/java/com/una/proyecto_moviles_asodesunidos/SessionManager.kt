@@ -2,13 +2,13 @@ package com.una.proyecto_moviles_asodesunidos
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.content.SharedPreferences.Editor
-import android.util.Log
 import androidx.core.content.edit
 import com.una.data.SessionData
+import com.una.models.UserModel
 
 object SessionManager {
     private lateinit var sharedPreferences: SharedPreferences
+    private var currentUser: UserModel? = null
     fun saveLogin(userId: String, sessionId: String) {
         sharedPreferences.edit {
             putString("userId", userId)
@@ -26,6 +26,22 @@ object SessionManager {
         sharedPreferences = context.getSharedPreferences("asodesunidos", Context.MODE_PRIVATE)
     }
 
+    fun setUser(user: UserModel){
+        currentUser = user
+    }
+
+    fun getUser(): UserModel? {
+        return currentUser
+    }
+
+    fun updateUser() {
+        val tempUser = AsodesunidosDB.getUsers().find { it.id == currentUser!!.id }
+        currentUser = tempUser
+    }
+
+    fun sessionUserExists(): Boolean{
+        return currentUser != null
+    }
     fun getSession(): SessionData? {
         val userId = sharedPreferences.getString("userId", null)
         val sessionId = sharedPreferences.getString("sessionId", null)

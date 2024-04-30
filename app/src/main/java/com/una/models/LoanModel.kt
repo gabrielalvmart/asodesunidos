@@ -3,10 +3,9 @@ package com.una.models
 class LoanModel(
     var amount: Double = 0.0, // Initial amount sent to associate
     var amountPaid: Double = 0.0, // How much the associate has paid off
-    var amountDue: Double = 0.0,
-    var loanTermYears: Int, // How many years to pay off
-    var interestRate: Double, // Percentage rate
-    var loanID: String?
+    var loanTermYears: Int = 0, // How many years to pay off
+    var interestRate: Double = 0.0, // Percentage rate
+    var loanID: String? = ""
 ) {
 
     enum class LoanTypeOption(var interest: Number) {
@@ -26,6 +25,8 @@ class LoanModel(
             }
         }
     }
+
+
 
     enum class LoanTermOption(val years: Int) {
         SHORT(3), MEDIUM(5), LONG(10);
@@ -50,10 +51,15 @@ class LoanModel(
     constructor(
         amount: Double,
         loanTerm: Int,
-        interestRate: Double
-    ) : this(amount = amount, amountPaid = 0.0, amountDue = amount, loanTermYears=loanTerm, interestRate = interestRate, loanID="")
+        interestRate: Double,
+        loanID: String
+    ) : this(amount = amount, amountPaid = 0.0, loanTermYears=loanTerm, interestRate = interestRate, loanID=loanID)
 
     fun addID(id: String){
         this.loanID=id
+    }
+
+    fun getAmountDue(): Double{
+        return amount - amountPaid
     }
 }

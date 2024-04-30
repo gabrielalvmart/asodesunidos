@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <Button
+        android:id="@+id/btn_loan_detail_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="#999999"
+        android:text="@string/go_back"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_loan_details_pay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/accent_cyan"
+        android:text="Pay"
+        app:layout_constraintStart_toStartOf="@+id/txt_loan_make_payment"
+        app:layout_constraintTop_toBottomOf="@+id/txt_loan_make_payment" />
+
+    <TextView
+    android:id="@+id/textViewLoanDetails"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="28dp"
+    android:layout_marginTop="28dp"
+    android:text="Loan details"
+    android:textSize="24sp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txvw_make_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Make payment"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/txt_loan_details_amount_remaining"
+        app:layout_constraintTop_toBottomOf="@+id/txt_loan_details_amount_remaining" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total loan amount"
+        app:layout_constraintBottom_toTopOf="@+id/txt_loan_details_total_amount"
+        app:layout_constraintStart_toStartOf="@+id/txt_loan_details_total_amount" />
+
+    <EditText
+        android:id="@+id/txt_loan_details_total_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:enabled="false"
+        android:hint="@string/_2000000"
+        android:inputType="number"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="@+id/textViewLoanDetails"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLoanDetails" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Amount paid off"
+        app:layout_constraintBottom_toTopOf="@+id/txt_loan_details_amount_paid"
+        app:layout_constraintStart_toStartOf="@+id/txt_loan_details_amount_paid" />
+
+    <EditText
+        android:id="@+id/txt_loan_details_amount_paid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:enabled="false"
+        android:hint="@string/_2000000"
+        android:inputType="number"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="@+id/textViewLoanDetails"
+        app:layout_constraintTop_toBottomOf="@+id/txt_loan_details_total_amount" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Amount remaining"
+        app:layout_constraintBottom_toTopOf="@+id/txt_loan_details_amount_remaining"
+        app:layout_constraintStart_toStartOf="@+id/txt_loan_details_amount_remaining" />
+
+    <EditText
+        android:id="@+id/txt_loan_make_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="5000"
+        android:inputType="number"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="@+id/txvw_make_payment"
+        app:layout_constraintTop_toBottomOf="@+id/txvw_make_payment" />
+
+    <EditText
+        android:id="@+id/txt_loan_details_amount_remaining"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:enabled="false"
+        android:hint="@string/_2000000"
+        android:inputType="number"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="@+id/txt_loan_details_amount_paid"
+        app:layout_constraintTop_toBottomOf="@+id/txt_loan_details_amount_paid" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

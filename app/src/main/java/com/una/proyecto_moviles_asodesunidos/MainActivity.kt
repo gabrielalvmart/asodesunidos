@@ -29,8 +29,11 @@ class MainActivity : AppCompatActivity() {
 
 
         btn_login.setOnClickListener{
-            if (loginUser())
+            if (loginUser()) {
+                txt_user.setText("")
+                txt_password.setText("")
                 Toast.makeText(this, "Logged In!", Toast.LENGTH_SHORT).show()
+            }
             else {
                 Toast.makeText(this, "Incorrect credentials", Toast.LENGTH_SHORT).show()
                 txt_user.setText("")
@@ -46,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         val tempUser = AsodesunidosDB.attemptLogin(txt_user.text.toString(), txt_password.text.toString())
         return if (tempUser != null) {
             sessionManager.saveLogin(tempUser.id, generateSessionId())
+            sessionManager.setUser(tempUser)
             when (tempUser.type) {
                 "associate" -> { startActivity(Intent(this, MainMenuCustomer::class.java )) }
                 "admin" -> { startActivity(Intent(this, MainMenuAdmin::class.java )) }

@@ -16,6 +16,12 @@
             android:name=".AddAssociateActivity"
             android:exported="false" />
         <activity
+            android:name=".MyLoans"
+            android:exported="false" />
+        <activity
+            android:name=".LoanDetail"
+            android:exported="false" />
+        <activity
             android:name=".MainMenuAdmin"
             android:exported="true" />
         <activity

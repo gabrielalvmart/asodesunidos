@@ -24,6 +24,7 @@ object AsodesunidosDB {
 
     fun fetchUsers(){
         db.getReference("users").get().addOnSuccessListener {
+            users = mutableListOf()
             for (child in it.children){
                 val user = child.getValue<UserModel>()
                 if (user != null && !users.contains(user)) {
@@ -33,7 +34,7 @@ object AsodesunidosDB {
         }
     }
 
-    private fun userExists(userid: String) : UserModel? {
+    fun userExists(userid: String) : UserModel? {
         return users.find{ it.id == userid}
     }
 
@@ -101,37 +102,18 @@ object AsodesunidosDB {
             }
     }
     fun addLoanToAssociate(associateId: String, loan: LoanModel, onComplete: (Boolean, String?) -> Unit) {
-        getAssociate(associateId) { associate ->
-            if (associate != null) {
-                Log.d("MRG", associate.id)
-                Log.d("MRG", loan.amount.toString())
-                val loanID = generateLoanID()
-                loan.addID(loanID)
-                Log.d("MRG", loan.loanID!!)
-                associate.id = associateId
-
-                associate.addLoan(loan)
-                associatesRef.child(associateId).setValue(associate)
-                    .addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            onComplete(true, null)
-                            Log.d("MRG", "Correctly added")
-                        } else {
-                            onComplete(false, task.exception?.message)
-                            Log.e("MRG", "Not added at all")
-                        }
-                    }
-
-            } else {
-                onComplete(false, "Associate not found")
+        val userRef = associatesRef.child(associateId)
+        userRef.child("loans").child(loan.loanID.toString()).setValue(loan)
+            .addOnCompleteListener() { task ->
+                if (task.isSuccessful) {
+                    onComplete(true, null)
+                    Log.d("MRG", "Correctly added")
+                } else {
+                    onComplete(false, task.exception?.message)
+                    Log.e("MRG", "Not added at all")
+                }
             }
-        }
+        fetchUsers()
     }
-
-    private fun generateLoanID(): String {
-        return "LOAN_" + System.currentTimeMillis().toString()
-    }
-
-
 
 }

@@ -21,7 +21,8 @@ class MainMenuAdmin : AppCompatActivity() {
 
         btnNewAssociate = findViewById(R.id.btn_new_associate)
         btnLogout.setOnClickListener{
-
+            SessionManager.clearSession()
+            finish()
         }
 
         btnNewAssociate.setOnClickListener{

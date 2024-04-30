@@ -1,6 +1,7 @@
 package com.una.proyecto_moviles_asodesunidos
 
 import android.annotation.SuppressLint
+import android.icu.util.CurrencyAmount
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
@@ -65,13 +66,18 @@ class AssignLoan : AppCompatActivity() {
         val monthlyPayment = calculateMonthlyPayment(loanAmount, interestRate, loanTermInYears)
 
         if (monthlyPayment > currentUser!!.calculateMaximumMonthlyPayment()){
+            txtAssignLoanMonthlyPayment.error = "The monthly payment is too high!"
             Toast.makeText(this, "NOOOOOO",Toast.LENGTH_SHORT).show()
         }
         else{
-
-            var tempLoan = LoanModel(loanAmount, loanTermInYears, interestRate)
+            val loanID = (currentUser!!.loans.filter{ true }.size).toString()
+            val tempLoan = LoanModel(loanAmount, loanTermInYears, interestRate, loanID)
             AsodesunidosDB.addLoanToAssociate(currentUser!!.id,tempLoan) { success, message ->
-                if(success) Toast.makeText(this, "Loan Added Successfully",Toast.LENGTH_SHORT).show()
+                if(success) {
+                    Toast.makeText(this, "Loan Added Successfully", Toast.LENGTH_SHORT).show()
+                    SessionManager.updateUser()
+                    finish()
+                }
                 else Toast.makeText(this, "Loan failed to be added",Toast.LENGTH_SHORT).show()
             }
         }

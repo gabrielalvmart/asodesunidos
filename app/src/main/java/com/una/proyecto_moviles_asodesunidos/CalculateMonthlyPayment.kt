@@ -20,6 +20,7 @@ class CalculateMonthlyPayment : AppCompatActivity() {
     private lateinit var spnLoanType : Spinner
     private lateinit var spnLoanTime : Spinner
     private lateinit var btnCalculateMonthlyPayment: Button
+    private lateinit var btnBack: Button
     private lateinit var txtLoanAmount: EditText
     private lateinit var txtMonthlyPayment: EditText
     private lateinit var txtvwMonthlyPayment: TextView
@@ -39,7 +40,7 @@ class CalculateMonthlyPayment : AppCompatActivity() {
         txtLoanAmount = findViewById(R.id.txt_loan_amount)
         txtMonthlyPayment = findViewById(R.id.txt_monthly_payment_result)
         txtvwMonthlyPayment = findViewById(R.id.txtvw_monthly_payment_result)
-
+        btnBack = findViewById(R.id.btn_calculate_monthly_payment_back)
         // Spinner logic
         loanTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         loanTernAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -52,6 +53,7 @@ class CalculateMonthlyPayment : AppCompatActivity() {
         txtMonthlyPayment.visibility = View.INVISIBLE
         txtvwMonthlyPayment.visibility = View.INVISIBLE
 
+        btnBack.setOnClickListener { finish() }
         // Calculate the monthly payment
         btnCalculateMonthlyPayment.setOnClickListener {
             val loanAmount =
