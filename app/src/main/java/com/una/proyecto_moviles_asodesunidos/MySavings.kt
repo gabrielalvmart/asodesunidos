@@ -37,6 +37,7 @@ class MySavings : AppCompatActivity() {
         txtRegistrationAmount = findViewById(R.id.txt_manage_savings_registration_amount)
         btnEnableExtraordinary = findViewById(R.id.btn_manage_savings_enable_extraordinary)
         txtExtraordinaryAmount = findViewById(R.id.txt_manage_savings_extraordinary_amount)
+        btnBack = findViewById(R.id.btn_manage_savings_back)
 
         // Configuración de listeners
         btnEnableExtraordinary.setOnClickListener { updateSavingsValue("extraordinary", txtExtraordinaryAmount.text.toString(), txtExtraordinaryAmount) }
