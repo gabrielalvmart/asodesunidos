@@ -84,20 +84,18 @@ class AssignLoan : AppCompatActivity() {
     }
 
     private fun handleAssociateSearchOnClick(){
-        if (txtAssignLoanAssociateID.text.isEmpty()) {
-            txtAssignLoanAssociateID.error = "Mandatory field"
-            return
-        }
-        var tempUser: UserModel? = null
-        val associateId = txtAssignLoanAssociateID.text.toString()
-        for (user in userList){
-            if (user.id == associateId){
-                tempUser = user
-                break
+        if (validateAssociateId()) {
+            var tempUser: UserModel? = null
+            val associateId = txtAssignLoanAssociateID.text.toString()
+            for (user in userList){
+                if (user.id == associateId){
+                    tempUser = user
+                    break
+                }
             }
+            if (tempUser != null) handleUserFound(tempUser)
+            else handleUserNotFound()
         }
-        if (tempUser != null) handleUserFound(tempUser)
-        else handleUserNotFound()
     }
 
     private fun handleUserNotFound(){
@@ -116,23 +114,25 @@ class AssignLoan : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun handleCalculateMonthlyPayment(){
-        val interestRate: Double = when {
-            spnLoanType.selectedItem.toString().contains("7.5") -> 7.5
-            spnLoanType.selectedItem.toString().contains("8") -> 8.0
-            spnLoanType.selectedItem.toString().contains("10") -> 10.0
-            spnLoanType.selectedItem.toString().contains("12") -> 12.0
-            else -> 0.0
+        if(validateLoanAmount()){
+            val interestRate: Double = when {
+                spnLoanType.selectedItem.toString().contains("7.5") -> 7.5
+                spnLoanType.selectedItem.toString().contains("8") -> 8.0
+                spnLoanType.selectedItem.toString().contains("10") -> 10.0
+                spnLoanType.selectedItem.toString().contains("12") -> 12.0
+                else -> 0.0
+            }
+            val loanTermInYears: Int = when {
+                spnLoanTerm.selectedItem.toString().contains("3") -> 3
+                spnLoanTerm.selectedItem.toString().contains("5") -> 5
+                spnLoanTerm.selectedItem.toString().contains("10") -> 10
+                else -> 0
+            }
+            val loanAmount: Double = txtLoanAmount.text.toString().toDouble()
+            val monthlyPayment = calculateMonthlyPayment(loanAmount, interestRate, loanTermInYears)
+            Toast.makeText(this, "Monthly payment calculated", Toast.LENGTH_SHORT).show()
+            txtAssignLoanMonthlyPayment.setText("%.2f".format(monthlyPayment))
         }
-        val loanTermInYears: Int = when {
-            spnLoanTerm.selectedItem.toString().contains("3") -> 3
-            spnLoanTerm.selectedItem.toString().contains("5") -> 5
-            spnLoanTerm.selectedItem.toString().contains("10") -> 10
-            else -> 0
-        }
-        val loanAmount: Double = txtLoanAmount.text.toString().toDouble()
-        val monthlyPayment = calculateMonthlyPayment(loanAmount, interestRate, loanTermInYears)
-        Toast.makeText(this, "Monthly payment calculated", Toast.LENGTH_SHORT).show()
-        txtAssignLoanMonthlyPayment.setText("%.2f".format(monthlyPayment))
     }
     private fun initializeVariables(){
         txtAssignLoanAssociateID = findViewById(R.id.txt_assignLoan_associateID)
@@ -198,6 +198,7 @@ class AssignLoan : AppCompatActivity() {
 
     }
 
+
     private fun setOnClickListeners(){
         btnAssignLoanBack.setOnClickListener {
             finish()
@@ -214,6 +215,33 @@ class AssignLoan : AppCompatActivity() {
         btnAssignLoanAssign.setOnClickListener {
             handleAssignLoanAssign()
         }
+    }
+
+    private fun validateAssociateId(): Boolean {
+        val associateId = txtAssignLoanAssociateID.text.toString()
+        if (associateId.isEmpty()) {
+            txtAssignLoanAssociateID.error = "Associate ID is required"
+            return false
+        }
+        return true
+    }
+
+    private fun validateLoanAmount(): Boolean {
+        val loanAmount = txtLoanAmount.text.toString()
+        if (loanAmount.isEmpty()) {
+            txtLoanAmount.error = "El valor del prestamo es requerido"
+            return false
+        }
+        val loanAmountValue = loanAmount.toDoubleOrNull()
+        if (loanAmountValue == null || loanAmountValue <= 0) {
+            txtLoanAmount.error = "Ingresa un valor válido para el prestamo"
+            return false
+        }
+        return true
+    }
+
+    private fun validateFields(): Boolean {
+        return validateAssociateId() && validateLoanAmount()
     }
 
 }

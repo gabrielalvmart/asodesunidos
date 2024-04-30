@@ -39,20 +39,24 @@ class MySavings : AppCompatActivity() {
         txtExtraordinaryAmount = findViewById(R.id.txt_manage_savings_extraordinary_amount)
 
         // Configuración de listeners
-        btnEnableExtraordinary.setOnClickListener { updateSavingsValue("extraordinary", txtExtraordinaryAmount.text.toString()) }
-        btnEnableChristmas.setOnClickListener { updateSavingsValue("christmas", txtChristmasAmount.text.toString()) }
-        btnEnableVehicle.setOnClickListener { updateSavingsValue("vehicle", txtRegistrationAmount.text.toString()) }
-        btnEnableSchool.setOnClickListener { updateSavingsValue("school", txtSchoolAmount.text.toString()) }
+        btnEnableExtraordinary.setOnClickListener { updateSavingsValue("extraordinary", txtExtraordinaryAmount.text.toString(), txtExtraordinaryAmount) }
+        btnEnableChristmas.setOnClickListener { updateSavingsValue("christmas", txtChristmasAmount.text.toString(), txtChristmasAmount) }
+        btnEnableVehicle.setOnClickListener { updateSavingsValue("vehicle", txtRegistrationAmount.text.toString(), txtRegistrationAmount) }
+        btnEnableSchool.setOnClickListener { updateSavingsValue("school", txtSchoolAmount.text.toString(), txtSchoolAmount) }
         btnBack.setOnClickListener{ finish()}
     }
 
-    private fun updateSavingsValue(savingsType: String, newValue: String) {
-        val amount = newValue.toIntOrNull() ?: 0
+    private fun updateSavingsValue(savingsType: String, newValue: String,edt: EditText) {
+        val amount = newValue.toIntOrNull()
+        if (amount == null || amount <= 0 || edt.toString().isEmpty()) {
+            edt.error = "Enter a valid amount"
+            return
+        }
         AsodesunidosDB.updateSavingsValue(associateId, savingsType, amount) { success, errorMessage ->
             if (success) {
-                showToast("Ahorro actualizado correctamente")
+                showToast("Savings updated successfully")
             } else {
-                showToast("Error al actualizar el ahorro: $errorMessage")
+                showToast("Error updating savings: $errorMessage")
             }
         }
     }
