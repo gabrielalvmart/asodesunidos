@@ -30,8 +30,9 @@ class MainActivity : AppCompatActivity() {
 
         btn_login.setOnClickListener{
             if (validateCredentials()) {
-                if (loginUser())
+                if (loginUser()) {
                     Toast.makeText(this, "Logged In!", Toast.LENGTH_SHORT).show()
+                }
                 else {
                     Toast.makeText(this, "Incorrect credentials", Toast.LENGTH_SHORT).show()
                     txt_user.setText("")
@@ -43,6 +44,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun restetFields(){
+        txt_user.setText("")
+        txt_password.setText("")
+    }
     private fun loginUser(): Boolean {
         val tempUser = AsodesunidosDB.attemptLogin(txt_user.text.toString(), txt_password.text.toString())
         return if (tempUser != null) {

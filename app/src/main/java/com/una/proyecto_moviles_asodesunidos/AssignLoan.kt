@@ -67,7 +67,7 @@ class AssignLoan : AppCompatActivity() {
 
         if (monthlyPayment > currentUser!!.calculateMaximumMonthlyPayment()){
             txtAssignLoanMonthlyPayment.error = "The monthly payment is too high!"
-            Toast.makeText(this, "NOOOOOO",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Couldn't add loan",Toast.LENGTH_SHORT).show()
         }
         else{
             val loanID = (currentUser!!.loans.filter{ true }.size).toString()
