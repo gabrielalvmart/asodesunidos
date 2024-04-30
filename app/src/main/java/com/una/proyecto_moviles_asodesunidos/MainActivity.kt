@@ -29,15 +29,16 @@ class MainActivity : AppCompatActivity() {
 
 
         btn_login.setOnClickListener{
-            if (loginUser())
-                Toast.makeText(this, "Logged In!", Toast.LENGTH_SHORT).show()
-            else {
-                Toast.makeText(this, "Incorrect credentials", Toast.LENGTH_SHORT).show()
-                txt_user.setText("")
-                txt_password.setText("")
+            if (validateCredentials()) {
+                if (loginUser())
+                    Toast.makeText(this, "Logged In!", Toast.LENGTH_SHORT).show()
+                else {
+                    Toast.makeText(this, "Incorrect credentials", Toast.LENGTH_SHORT).show()
+                    txt_user.setText("")
+                    txt_password.setText("")
+                }
             }
         }
-
 
 
     }
@@ -59,6 +60,22 @@ class MainActivity : AppCompatActivity() {
         val currentTime = System.currentTimeMillis().toString()
         val randomString = (0..9999).random().toString().padStart(4, '0')
         return "$currentTime-$randomString"
+    }
+    private fun validateCredentials(): Boolean {
+        val username = txt_user.text.toString()
+        val password = txt_password.text.toString()
+
+        if (username.isEmpty()) {
+            txt_user.error = "Username is required"
+            return false
+        }
+
+        if (password.isEmpty()) {
+            txt_password.error = "Password is required"
+            return false
+        }
+
+        return true
     }
 
 

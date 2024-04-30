@@ -33,7 +33,7 @@ object AsodesunidosDB {
         }
     }
 
-    private fun userExists(userid: String) : UserModel? {
+    fun userExists(userid: String) : UserModel? {
         return users.find{ it.id == userid}
     }
 

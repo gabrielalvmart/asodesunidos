@@ -61,51 +61,65 @@ class AddAssociateActivity : AppCompatActivity() {
             val maritalStatus = maritalStatusSpinner.selectedItem.toString()
             val address = addressEditText.text.toString()
 
-            // Validar campos vacíos
-            if (idNumber.isEmpty()) {
-                idNumberEditText.error = "Campo obligatorio"
-                return@setOnClickListener
+            if (validateAssociateFields(idNumber, fullName, wage, phoneNumber, dateOfBirth, address)) {
+                val wageInt = wage.toInt()
+                val savings = SavingModel(0, 0, 0, 0)
+                val associate = UserModel(
+                    idNumber, "TEMPORAL", "associate", fullName, wageInt, phoneNumber,
+                    dateOfBirth, maritalStatus, address, emptyList(), savings
+                )
+                addAssociateToDataBase(associate)
             }
-
-            if (fullName.isEmpty()) {
-                fullNameEditText.error = "Campo obligatorio"
-                return@setOnClickListener
-            }
-
-            if (wage.isEmpty()) {
-                wageEditText.error = "Campo obligatorio"
-                return@setOnClickListener
-            }
-
-            if (phoneNumber.isEmpty()) {
-                phoneNumberEditText.error = "Campo obligatorio"
-                return@setOnClickListener
-            }
-
-            if (dateOfBirth.isEmpty()) {
-                dateOfBirthEditText.error = "Campo obligatorio"
-                return@setOnClickListener
-            }
-
-            if (address.isEmpty()) {
-                addressEditText.error = "Campo obligatorio"
-                return@setOnClickListener
-            }
-
-            // Validar formato de salario (debe ser un número válido)
-            val wageInt = wage.toIntOrNull()
-            if (wageInt == null || wageInt <= 0) {
-                wageEditText.error = "Ingrese un salario válido"
-                return@setOnClickListener
-            }
-            val savings = SavingModel(0,0,0,0)
-            val associate = UserModel(idNumber, "TEMPORAL", "associate", fullName, wage.toInt(), phoneNumber, dateOfBirth, maritalStatus, address, emptyList(),savings)
-            addAssociateToDataBase(associate)
         }
 
         backButton.setOnClickListener{
-            startActivity(Intent(this, MainMenuAdmin::class.java ))
+            finish()
         }
+    }
+    private fun validateAssociateFields(
+        idNumber: String,
+        fullName: String,
+        wage: String,
+        phoneNumber: String,
+        dateOfBirth: String,
+        address: String
+    ): Boolean {
+        if (idNumber.isEmpty()) {
+            idNumberEditText.error = "Campo obligatorio"
+            return false
+        }
+
+        if (fullName.isEmpty()) {
+            fullNameEditText.error = "Campo obligatorio"
+            return false
+        }
+
+        if (wage.isEmpty()) {
+            wageEditText.error = "Campo obligatorio"
+            return false
+        }
+
+        val wageInt = wage.toIntOrNull()
+        if (wageInt == null || wageInt <= 0) {
+            wageEditText.error = "Ingrese un salario válido"
+            return false
+        }
+
+        if (phoneNumber.isEmpty()) {
+            phoneNumberEditText.error = "Campo obligatorio"
+            return false
+        }
+
+        if (dateOfBirth.isEmpty()) {
+            dateOfBirthEditText.error = "Campo obligatorio"
+            return false
+        }
+
+        if (address.isEmpty()) {
+            addressEditText.error = "Campo obligatorio"
+            return false
+        }
+        return true
     }
 
     private fun addAssociateToDataBase(associate: UserModel) {
@@ -118,7 +132,6 @@ class AddAssociateActivity : AppCompatActivity() {
             }
         }
     }
-
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }

@@ -90,18 +90,37 @@ class MyInformation : AppCompatActivity() {
             password = savedUser?.password,
             type = savedUser?.type
         )
-
-        AsodesunidosDB.updateAssociate(updatedUser) { success, errorMessage ->
-            if (success) {
-                showToast("La información del usuario se actualizó con éxito")
-                finish()
-            } else {
-                showToast("Ocurrió un error al actualizar la información del usuario:$errorMessage ")
+        if(validateFields()){
+            AsodesunidosDB.updateAssociate(updatedUser) { success, errorMessage ->
+                if (success) {
+                    showToast("The user's information has been updated")
+                    finish()
+                } else {
+                    showToast("An error occurred while updating user information:$errorMessage ")
+                }
             }
         }
+
     }
 
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun validateFields(): Boolean {
+        val phoneNumber = phoneNumberEditText.text.toString()
+        val address = addressEditText.text.toString()
+
+        if (phoneNumber.isEmpty()) {
+            phoneNumberEditText.error = "Phone Number is required"
+            return false
+        }
+
+        if (address.isEmpty()) {
+            addressEditText.error = "Address is required"
+            return false
+        }
+
+        return true
     }
 }

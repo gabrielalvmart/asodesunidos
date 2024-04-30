@@ -54,29 +54,35 @@ class CalculateMonthlyPayment : AppCompatActivity() {
 
         // Calculate the monthly payment
         btnCalculateMonthlyPayment.setOnClickListener {
-            val loanAmount =
-                txtLoanAmount.text.toString().toDoubleOrNull() ?: return@setOnClickListener
-            val annualInterestRate = when (spnLoanType.selectedItemPosition) {
-                0 -> 7.5 // Mortgage (7.5%)
-                1 -> 8.0 // Education (8%)
-                2 -> 10.0 // Personal (10%)
-                3 -> 12.0 // Trips (12%)
-                else -> return@setOnClickListener
+            if (validateLoanAmount()) {
+                val loanAmount =
+                    txtLoanAmount.text.toString().toDoubleOrNull() ?: return@setOnClickListener
+                val annualInterestRate = when (spnLoanType.selectedItemPosition) {
+                    0 -> 7.5 // Mortgage (7.5%)
+                    1 -> 8.0 // Education (8%)
+                    2 -> 10.0 // Personal (10%)
+                    3 -> 12.0 // Trips (12%)
+                    else -> return@setOnClickListener
+                }
+                val loanTermInYears = when (spnLoanTime.selectedItemPosition) {
+                    0 -> 3 // 3 years
+                    1 -> 5 // 5 years
+                    2 -> 10 // 10 years
+                    else -> return@setOnClickListener
+                }
+
+
+                val monthlyPayment = calculateMonthlyPayment(
+                    txtLoanAmount.text.toString().toInt(),
+                    annualInterestRate,
+                    loanTermInYears
+                )
+                txtMonthlyPayment.setText(monthlyPayment.toString())
+                txtMonthlyPayment.visibility = View.VISIBLE
+                txtvwMonthlyPayment.visibility = View.VISIBLE
+
+                // TODO: Add a 'back' button
             }
-            val loanTermInYears = when (spnLoanTime.selectedItemPosition) {
-                0 -> 3 // 3 years
-                1 -> 5 // 5 years
-                2 -> 10 // 10 years
-                else -> return@setOnClickListener
-            }
-
-
-            val monthlyPayment = calculateMonthlyPayment(txtLoanAmount.text.toString().toInt(), annualInterestRate, loanTermInYears)
-            txtMonthlyPayment.setText(monthlyPayment.toString())
-            txtMonthlyPayment.visibility = View.VISIBLE
-            txtvwMonthlyPayment.visibility = View.VISIBLE
-
-            // TODO: Add a 'back' button
         }
     }
     private fun calculateMonthlyPayment(loanAmount: Int, annualInterestRate: Double, loanTermInYears: Int): String {
@@ -88,4 +94,19 @@ class CalculateMonthlyPayment : AppCompatActivity() {
 
         return "%.2f".format(numerator / denominator)
     } // TODO: Abstract this to another maths file
+
+    private fun validateLoanAmount(): Boolean {
+        val loanAmount = txtLoanAmount.text.toString()
+        if (loanAmount.isEmpty()) {
+            txtLoanAmount.error = "Loan amount is required"
+            return false
+        }
+
+        val loanAmountValue = loanAmount.toDoubleOrNull()
+        if (loanAmountValue == null || loanAmountValue <= 0) {
+            txtLoanAmount.error = "Enter a valid loan amount"
+            return false
+        }
+        return true
+    }
 }
