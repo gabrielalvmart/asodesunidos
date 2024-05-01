@@ -9,7 +9,9 @@ import com.google.firebase.database.getValue
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.una.models.LoanModel
+import com.una.models.SavingModel
 import com.una.models.UserModel
+import kotlinx.coroutines.flow.callbackFlow
 
 object AsodesunidosDB {
     private val db = Firebase.database
@@ -91,8 +93,7 @@ object AsodesunidosDB {
     }
 
     fun updateSavingsValue(userId: String, savingsType: String, newValue: Int, onComplete: (Boolean, String?) -> Unit) {
-        val userRef = associatesRef.child(userId)
-        userRef.child("savings").child(savingsType).setValue(newValue)
+        associatesRef.child(userId).child("savings").child(savingsType).setValue(newValue)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     onComplete(true, null)
@@ -114,6 +115,19 @@ object AsodesunidosDB {
                 }
             }
         fetchUsers()
+    }
+
+    fun getSavings(associateId: String, saving: (SavingModel?)->Unit){
+        associatesRef.child(associateId).child("savings").addListenerForSingleValueEvent(object :
+            ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val savingsData = snapshot.getValue(SavingModel::class.java)
+                    saving(savingsData)
+                }
+                override fun onCancelled(error: DatabaseError) {
+                    saving(null)
+                }
+            })
     }
 
 }
