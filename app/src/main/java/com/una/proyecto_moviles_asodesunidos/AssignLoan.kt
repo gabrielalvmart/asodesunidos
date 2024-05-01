@@ -94,6 +94,7 @@ class AssignLoan : AppCompatActivity() {
         }
     }
 
+
     private fun handleAssociateSearchOnClick(){
         if (validateAssociateId()) {
             var tempUser: UserModel? = null

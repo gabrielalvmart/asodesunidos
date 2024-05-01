@@ -1,5 +1,6 @@
 package com.una.proyecto_moviles_asodesunidos
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -9,6 +10,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.una.models.LoanModel
 
@@ -27,10 +29,21 @@ class MyLoans : AppCompatActivity() {
             finish()
         }
 
+
+        loadLoanList()
+
+    }
+
+    private val loanDetailLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { _ ->
+
+        loadLoanList()
+    }
+
+    private fun loadLoanList(){
         if (SessionManager.getUser()?.loans!!.isNotEmpty() ) {
             loanList = SessionManager.getUser()?.loans!!.filter { true }.sortedBy { it.loanID }
             linearLayout = findViewById(R.id.linearLayoutRow)
-
+            linearLayout.removeAllViews()
             for (loan in loanList) {
                 val newRow = LayoutInflater.from(this).inflate(R.layout.my_loans_table_row, null) as LinearLayout
                 val loanIdTextView = newRow.findViewById<TextView>(R.id.my_loans_tv_loan_id)
@@ -43,11 +56,15 @@ class MyLoans : AppCompatActivity() {
                 btnDetails.setOnClickListener {
                     val intent = Intent(this, LoanDetail::class.java)
                     intent.putExtra("loanID", loan.loanID)
-                    startActivity(intent)
+                    loanDetailLauncher.launch(intent)
                 }
 
                 linearLayout.addView(newRow)
             }
         }
     }
+
+
+
 }
+
