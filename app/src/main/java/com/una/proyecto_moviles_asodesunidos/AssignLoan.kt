@@ -44,11 +44,22 @@ class AssignLoan : AppCompatActivity() {
         initializeVariables()
         setSecondSectionInvisible()
         setOnClickListeners()
-
     }
 
 
     private fun handleAssignLoanAssign() {
+
+        if (txtLoanAmount.text.isEmpty()){
+            txtLoanAmount.error = "Please fill this field"
+            return
+        }
+        if (txtAssignLoanMonthlyPayment.text.isEmpty()){
+            txtAssignLoanMonthlyPayment.error = "Please fill this field"
+            return
+        }
+
+        txtAssignLoanMonthlyPayment.error = null;
+        txtLoanAmount.error = null
         val interestRate: Double = when {
             spnLoanType.selectedItem.toString().contains("7.5") -> 7.5
             spnLoanType.selectedItem.toString().contains("8") -> 8.0

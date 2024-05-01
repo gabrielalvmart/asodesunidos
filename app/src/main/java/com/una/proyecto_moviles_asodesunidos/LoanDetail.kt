@@ -1,6 +1,7 @@
 package com.una.proyecto_moviles_asodesunidos
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -31,13 +32,28 @@ class LoanDetail :AppCompatActivity() {
         txtLoanAmount.setText(loanDetail!!.amount.toString())
         txtAmountPaid.setText(loanDetail!!.amountPaid.toString())
         txtRemaining.setText((loanDetail!!.amount - loanDetail!!.amountPaid).toString())
-
         btnGoBack.setOnClickListener { finish() }
 
         btnPay.setOnClickListener {
-            makePayment()
+            if (validateFields()) makePayment()
         }
 
+    }
+
+    private fun validateFields(): Boolean{
+        if (txtMakePayment.text.toString().isEmpty()){
+            txtMakePayment.error = "Please fill this field"
+            return false
+        }
+        else{
+            if (txtMakePayment.text.toString().toInt() <= (loanDetail!!.amount - loanDetail!!.amountPaid)){
+                return true
+            }
+            else{
+                txtMakePayment.error = "Can't pay more than you owe!"
+            }
+        }
+        return false
     }
 
     private fun initializeVars(){
@@ -46,6 +62,10 @@ class LoanDetail :AppCompatActivity() {
         txtRemaining = findViewById(R.id.txt_loan_details_amount_remaining)
         txtMakePayment = findViewById(R.id.txt_loan_make_payment)
         btnPay = findViewById(R.id.btn_loan_details_pay)
+        if (loanDetail!!.amount == loanDetail!!.amountPaid){
+            txtMakePayment.hint = "LOAN FULLY PAID"
+            btnPay.visibility = View.INVISIBLE
+        }
         btnGoBack = findViewById(R.id.btn_loan_detail_back)
     }
 

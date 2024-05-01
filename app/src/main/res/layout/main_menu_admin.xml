@@ -15,7 +15,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/admin_homepage_image" />
+        app:srcCompat="@drawable/admin_homepage_image"
+        android:contentDescription="TODO" />
 
     <Button
         android:id="@+id/btn_new_associate"

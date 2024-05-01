@@ -31,12 +31,12 @@ class MainActivity : AppCompatActivity() {
         btn_login.setOnClickListener{
             if (validateCredentials()) {
                 if (loginUser()) {
+                    resetFields()
                     Toast.makeText(this, "Logged In!", Toast.LENGTH_SHORT).show()
                 }
                 else {
+                    resetFields()
                     Toast.makeText(this, "Incorrect credentials", Toast.LENGTH_SHORT).show()
-                    txt_user.setText("")
-                    txt_password.setText("")
                 }
             }
         }
@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun restetFields(){
+    private fun resetFields(){
         txt_user.setText("")
         txt_password.setText("")
     }

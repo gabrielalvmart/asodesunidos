@@ -9,15 +9,15 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MySavings : AppCompatActivity() {
 
-    lateinit var btnEnableChristmas: Button
-    lateinit var txtChristmasAmount: EditText
-    lateinit var btnEnableSchool: Button
-    lateinit var txtSchoolAmount: EditText
-    lateinit var btnEnableVehicle: Button
-    lateinit var txtRegistrationAmount: EditText
-    lateinit var btnEnableExtraordinary: Button
-    lateinit var txtExtraordinaryAmount: EditText
-    lateinit var btnBack: Button
+    private lateinit var btnEnableChristmas: Button
+    private lateinit var txtChristmasAmount: EditText
+    private lateinit var btnEnableSchool: Button
+    private lateinit var txtSchoolAmount: EditText
+    private lateinit var btnEnableVehicle: Button
+    private lateinit var txtRegistrationAmount: EditText
+    private lateinit var btnEnableExtraordinary: Button
+    private lateinit var txtExtraordinaryAmount: EditText
+    private lateinit var btnBack: Button
 
     private val associateId: String by lazy {
         SessionManager.getSession()?.userId.toString()
@@ -47,10 +47,15 @@ class MySavings : AppCompatActivity() {
         btnBack.setOnClickListener{ finish()}
     }
 
+
     private fun updateSavingsValue(savingsType: String, newValue: String,edt: EditText) {
         val amount = newValue.toIntOrNull()
         if (amount == null || amount <= 0 || edt.toString().isEmpty()) {
             edt.error = "Enter a valid amount"
+            return
+        }
+        if (amount < 5000) {
+            edt.error = "Enter at least 5000"
             return
         }
         AsodesunidosDB.updateSavingsValue(associateId, savingsType, amount) { success, errorMessage ->

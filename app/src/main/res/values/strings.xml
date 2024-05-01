@@ -41,7 +41,7 @@
     <string name="your_monthly_payment_is">Your monthly payment is:</string>
     <string name="manage_savings">Manage savings</string>
     <string name="manage_savings_type">Type</string>
-    <string name="manage_savings_status">Status</string>
+    <string name="manage_savings_status">Action</string>
     <string name="manage_savings_amount">Amount</string>
     <string name="manage_savings_christmas">Christmas</string>
     <string name="manage_savings_enable">Enable</string>
